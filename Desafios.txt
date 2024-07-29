@@ -1,0 +1,49 @@
+1- Fibonacci Sequence:
+
+    Desafio: Escreva uma função para calcular o n-ésimo número da sequência de Fibonacci.
+    Soluções: Recursiva, iterativa, memoização.
+
+2- Palíndromo:
+
+    Desafio: Verifique se uma string é um palíndromo.
+    Soluções: Comparação direta, usando pilha, usando deque.
+
+3- Ordenação de Lista:
+
+    Desafio: Ordene uma lista de números.
+    Soluções: Bubble sort, insertion sort, selection sort.
+
+4- Busca em Lista:
+
+    Desafio: Encontre um elemento em uma lista.
+    Soluções: Busca linear, busca binária (se a lista estiver ordenada).
+
+5- Soma de Pares:
+
+    Desafio: Dada uma lista de números e um valor alvo, encontre dois números na lista que somam ao valor alvo.
+    Soluções: Força bruta (duplo loop), usando um dicionário para armazenar complementos.
+
+6- Anagramas:
+
+    Desafio: Verifique se duas strings são anagramas.
+    Soluções: Ordenação e comparação, contagem de caracteres.
+
+7- Maior Subsequência Contígua:
+
+    Desafio: Encontre a maior soma de uma subsequência contígua em uma lista de números.
+    Soluções: Força bruta, algoritmo de Kadane.
+
+8- Contagem de Caracteres:
+
+    Desafio: Conte a frequência de cada caractere em uma string.
+    Soluções: Usando um dicionário, usando a biblioteca collections.Counter.
+
+9- Números Primos:
+
+    Desafio: Gere todos os números primos até um número n.
+    Soluções: Crivo de Eratóstenes, verificação direta.
+
+10- Parênteses Balanceados:
+
+    Desafio: Verifique se uma string de parênteses está balanceada.
+    Soluções: Usando uma pilha, contagem direta.
