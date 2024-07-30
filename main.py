@@ -1,9 +1,9 @@
-import threading 
+import threading
 import time
+import random
 from collections import deque
+from concurrent.futures import ThreadPoolExecutor
 
-pontuacao = [0, 0, 0, 0]
-threads = []
 
 #Fibonacci 
 def fibonacci_recursive(n): #1
@@ -102,17 +102,18 @@ class MySemaphore:
 
 def first_thread(nome):
 
-
-    fibonacci_recursive(10)
+    
+    fibonacci_recursive(20)
     if semaphore.acquire():
         print(f"Thread {nome} terminou fibonacci recursivo e deu lock no semáforo.")
-        pontuacao[0] += 1
+        pontuacao[0] += 1 
         time.sleep(1)
         semaphore.release()
         print(f"Thread {nome} terminou fibonacci recursivo e deslockou o semáforo.")
 
     else:
         print(f"Thread {nome} terminou fibonacci recursivo e não conseguiu lock no semáforo.")   
+        time.sleep(random.uniform(0.4, 0.6))
 
 
     bubble_sort([3, 2, 1])
@@ -125,6 +126,7 @@ def first_thread(nome):
 
     else:
         print(f"Thread {nome} terminou bubble sort e não conseguiu lock no semáforo.")
+        time.sleep(random.uniform(0.4, 0.6))
 
 
     check_palindrome(1) #is_palindrome_stack
@@ -136,12 +138,13 @@ def first_thread(nome):
         print(f"Thread {nome} terminou palíndromos com stack e deslockou o semáforo.")
     else:
         print(f"Thread {nome} terminou palíndromos com stack e não conseguiu lock no semáforo.")
+        time.sleep(random.uniform(0.4, 0.6))
 
 
 def second_thread(nome):
 
-
-    fibonacci_recursive(10)
+    
+    fibonacci_recursive(20)
     if semaphore.acquire():
         print(f"Thread {nome} terminou fibonacci recursivo e deu lock no semáforo.")
         pontuacao[1] += 1
@@ -151,6 +154,7 @@ def second_thread(nome):
 
     else:
         print(f"Thread {nome} terminou fibonacci recursivo e não conseguiu lock no semáforo.")   
+        time.sleep(random.uniform(0.4, 0.6))
 
 
     bubble_sort([3, 2, 1])
@@ -163,6 +167,7 @@ def second_thread(nome):
 
     else:
         print(f"Thread {nome} terminou bubble sort e não conseguiu lock no semáforo.")
+        time.sleep(random.uniform(0.4, 0.6))
 
 
     check_palindrome(2) #is_palindrome_deque
@@ -174,84 +179,88 @@ def second_thread(nome):
         print(f"Thread {nome} terminou palíndromos com deque e deslockou o semáforo.")
     else:
         print(f"Thread {nome} terminou palíndromos com deque e não conseguiu lock no semáforo.")
+        time.sleep(random.uniform(0.4, 0.6))
 
 
 def third_thread(nome):
     
-        fibonacci_iterative(20)
-        if semaphore.acquire():
-            print(f"Thread {nome} terminou fibonacci iterativo e deu lock no semáforo.")
-            pontuacao[2] += 1
-            time.sleep(1)
-            semaphore.release()
-            print(f"Thread {nome} terminou fibonacci iterativo e deslockou o semáforo.")
-    
-        else:
-            print(f"Thread {nome} terminou fibonacci iterativo e não conseguiu lock no semáforo.")   
-    
-    
-        insertion_sort([3, 2, 1])
-        if semaphore.acquire():
-            print(f"Thread {nome} terminou insertion sort e deu lock no semáforo.")
-            pontuacao[2] += 1
-            time.sleep(1)
-            semaphore.release()
-            print(f"Thread {nome} terminou insertion sort e deslockou o semáforo.")
-    
-        else:
-            print(f"Thread {nome} terminou insertion sort e não conseguiu lock no semáforo.")
-    
-    
-        check_palindrome(1) #is_palindrome_stack
-        if semaphore.acquire():
-            print(f"Thread {nome} terminou palíndromos com stack e deu lock no semáforo.")
-            pontuacao[2] += 1
-            time.sleep(1)
-            semaphore.release()
-            print(f"Thread {nome} terminou palíndromos com stack e deslockou o semáforo.")
-        else:
-            print(f"Thread {nome} terminou palíndromos com stack e não conseguiu lock no semáforo.")
+    fibonacci_iterative(20)
+    if semaphore.acquire():
+        print(f"Thread {nome} terminou fibonacci iterativo e deu lock no semáforo.")
+        pontuacao[2] += 1
+        time.sleep(1)
+        semaphore.release()
+        print(f"Thread {nome} terminou fibonacci iterativo e deslockou o semáforo.")
+
+    else:
+        print(f"Thread {nome} terminou fibonacci iterativo e não conseguiu lock no semáforo.")   
+        time.sleep(random.uniform(0.4, 0.6))
+
+
+    insertion_sort([3, 2, 1])
+    if semaphore.acquire():
+        print(f"Thread {nome} terminou insertion sort e deu lock no semáforo.")
+        pontuacao[2] += 1
+        time.sleep(1)
+        semaphore.release()
+        print(f"Thread {nome} terminou insertion sort e deslockou o semáforo.")
+
+    else:
+        print(f"Thread {nome} terminou insertion sort e não conseguiu lock no semáforo.")
+        time.sleep(random.uniform(0.4, 0.6))
+
+
+    check_palindrome(1) #is_palindrome_stack
+    if semaphore.acquire():
+        print(f"Thread {nome} terminou palíndromos com stack e deu lock no semáforo.")
+        pontuacao[2] += 1
+        time.sleep(1)
+        semaphore.release()
+        print(f"Thread {nome} terminou palíndromos com stack e deslockou o semáforo.")
+    else:
+        print(f"Thread {nome} terminou palíndromos com stack e não conseguiu lock no semáforo.")
+        time.sleep(random.uniform(0.4, 0.6))
 
 
 def fourth_thread(nome):
         
+   
+    fibonacci_iterative(20)
+    if semaphore.acquire():
+        print(f"Thread {nome} terminou fibonacci iterativo e deu lock no semáforo.")
+        pontuacao[3] += 1
+        time.sleep(1)
+        semaphore.release()
+        print(f"Thread {nome} terminou fibonacci iterativo e deslockou o semáforo.")
 
-        fibonacci_iterative(20)
-        if semaphore.acquire():
-            print(f"Thread {nome} terminou fibonacci iterativo e deu lock no semáforo.")
-            pontuacao[3] += 1
-            time.sleep(1)
-            semaphore.release()
-            print(f"Thread {nome} terminou fibonacci iterativo e deslockou o semáforo.")
+    else:
+        print(f"Thread {nome} terminou fibonacci iterativo e não conseguiu lock no semáforo.")   
+        time.sleep(0.5)
+ 
     
-        else:
-            print(f"Thread {nome} terminou fibonacci iterativo e não conseguiu lock no semáforo.")   
-        
-        
-        bubble_sort([3, 2, 1])
-        if semaphore.acquire():
-            print(f"Thread {nome} terminou bubble sort e deu lock no semáforo.")
-            pontuacao[3] += 1
-            time.sleep(1)
-            semaphore.release()
-            print(f"Thread {nome} terminou bubble sort e deslockou o semáforo.")
+    bubble_sort([3, 2, 1])
+    if semaphore.acquire():
+        print(f"Thread {nome} terminou bubble sort e deu lock no semáforo.")
+        pontuacao[3] += 1
+        time.sleep(1)
+        semaphore.release()
+        print(f"Thread {nome} terminou bubble sort e deslockou o semáforo.")
 
-        else:
-            print(f"Thread {nome} terminou bubble sort e não conseguiu lock no semáforo.")
+    else:
+        print(f"Thread {nome} terminou bubble sort e não conseguiu lock no semáforo.")
+        time.sleep(random.uniform(0.4, 0.6))
 
 
-        check_palindrome(2) #is_palindrome_deque
-        if semaphore.acquire():
-            print(f"Thread {nome} terminou palíndromos com deque e deu lock no semáforo.")
-            pontuacao[3] += 1
-            time.sleep(1)
-            semaphore.release()
-            print(f"Thread {nome} terminou palíndromos com deque e deslockou o semáforo.")
-        else:
-            print(f"Thread {nome} terminou palíndromos com deque e não conseguiu lock no semáforo.")
-
-
-
+    check_palindrome(2) #is_palindrome_deque
+    if semaphore.acquire():
+        print(f"Thread {nome} terminou palíndromos com deque e deu lock no semáforo.")
+        pontuacao[3] += 1
+        time.sleep(1)
+        semaphore.release()
+        print(f"Thread {nome} terminou palíndromos com deque e deslockou o semáforo.")
+    else:
+        print(f"Thread {nome} terminou palíndromos com deque e não conseguiu lock no semáforo.")
+        time.sleep(random.uniform(0.4, 0.6))
 
 
 
@@ -259,19 +268,17 @@ semaphore = MySemaphore(3)
 pontuacao = [0, 0, 0, 0]
 threads = []
 
-threads.append(threading.Thread(target=first_thread, args=("Player1",)))
-threads.append(threading.Thread(target=second_thread, args=("Player2",)))
-threads.append(threading.Thread(target=third_thread, args=("Player3",)))
-threads.append(threading.Thread(target=fourth_thread, args=("Player4",)))
+with ThreadPoolExecutor(max_workers=3) as executor:
+    futures = []
+    futures.append(executor.submit(first_thread, "Player1"))
+    futures.append(executor.submit(second_thread, "Player2"))
+    futures.append(executor.submit(third_thread, "Player3"))
+    futures.append(executor.submit(fourth_thread, "Player4"))
 
-for thread in threads:
-    thread.start()
-
-for thread in threads:
-    thread.join()
-
+    for future in futures:
+        future.result()
 print("Todas as threads terminaram.")
 
 print("Pontuação final:")
-for i in pontuacao:
-    print(f"Player {i}: {pontuacao[i]}")
+for i in range(4):
+    print(f"Player {i + 1}: {pontuacao[i]}")
