@@ -1,0 +1,3 @@
+Este projeto foi realizado para contemplar a avaliação da matéria MATA58-SISTEMAS OPERACIONAIS ministrada pelo Prof. Robespierre Pitta, na Universidade Federal da Bahia.
+
+Este jogo consiste em uma competição, onde os players são threads diferentes que objetivam resolver desafios matemáticos conhecidos com algoritimos diferentes...
