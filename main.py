@@ -152,13 +152,12 @@ array = [34, 7, 23, 32, 5, 62, 32, 2, 1, 4, 12, 22, 45, 33, 21, 56, 78,
          90, 11, 13, 15, 17, 19, 20, 25, 27, 29, 31, 35, 37, 39, 41, 43, 
          47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77, 79]
 
-medals = ["🥇", "🥈", "🥉"]
+medals = ["🥇", "🥈", "🥉", "😤"]
 
 challenges = [fibonacci, sorting, palindrome]
 
 semaphore = MySemaphore(1)
 
-p1, p2, p3, p4 = 0, 0, 0, 0
 pontuacao = [0, 0, 0, 0]
 
 threads = []
@@ -177,8 +176,17 @@ print("Todas as threads terminaram.")
 print("Pontuação final:")
 
 
-for i in range(4):
-    #if i < 3:
-     #print(medals[i], end=" ")
-    print(f"Player {i + 1}: {pontuacao[i]}")
-    
+#for i in range(4):
+#   if i < 3:
+#       print(medals[i], end=" ")
+#   print(f"Player {i + 1}: {pontuacao[i]} pontos")
+
+pontuacao_com_indices = [(pontuacao[i], i) for i in range(4)]
+
+pontuacao_ordenada = sorted(pontuacao_com_indices, key=lambda x: x[0], reverse=True)
+
+a = 0
+for pontuacao, i in pontuacao_ordenada:
+    print(medals[a], end=" ")
+    print(f"Player {i + 1}: {pontuacao} pontos")
+    a += 1
