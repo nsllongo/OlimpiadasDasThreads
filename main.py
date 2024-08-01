@@ -101,7 +101,7 @@ class palindrome():
 
 
 
-
+#Semaforo
 class MySemaphore:
     def __init__(self, initial):
         self._lock = threading.Lock()
@@ -120,7 +120,7 @@ class MySemaphore:
             self._counter += 1
 
 
-
+#Função que cria as threads
 def mythread(name, id):
 
     for i in range(10):
@@ -139,7 +139,7 @@ def mythread(name, id):
 
 
 
-
+#Lista de palavras utilizadas no desafio de palindromos
 words = [
     "radar", "sistemas", "level", "rotor", "civic", "madam", "refer", "deified", "racecar", "repaper", "reviver",
     "redder", "stats", "tenet", "wow", "noon", "kayak", "malayalam", "solos", "minim", "madam", "python",
@@ -148,20 +148,26 @@ words = [
     "repaper", "reviver", "redder", "stats", "tenet", "wow", "noon", "kayak", "malayalam", "solos", "robespierre"
 ]
 
+#Lista de números utilizados no desafio de ordenação
 array = [34, 7, 23, 32, 5, 62, 32, 2, 1, 4, 12, 22, 45, 33, 21, 56, 78, 
          90, 11, 13, 15, 17, 19, 20, 25, 27, 29, 31, 35, 37, 39, 41, 43, 
          47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77, 79]
 
 medals = ["🥇", "🥈", "🥉", "😤"]
 
+#Array com as funções dos desafios	
 challenges = [fibonacci, sorting, palindrome]
 
+#Inicialização do semáforo
 semaphore = MySemaphore(1)
 
+#Array com as pontuações dos jogadores
 pontuacao = [0, 0, 0, 0]
 
+#Array com as threads
 threads = []
 
+#Criação das threads com ThreadPoolExecutor
 with ThreadPoolExecutor(max_workers=3) as executor:
     futures = []
     futures.append(executor.submit(mythread, "Player1", 0))
@@ -175,16 +181,13 @@ print("Todas as threads terminaram.")
 
 print("Pontuação final:")
 
-
-#for i in range(4):
-#   if i < 3:
-#       print(medals[i], end=" ")
-#   print(f"Player {i + 1}: {pontuacao[i]} pontos")
-
+#Salvar pontuações junto aos seusn índices que identificam a thread que a fez
 pontuacao_com_indices = [(pontuacao[i], i) for i in range(4)]
 
+#Ordenar pontuações
 pontuacao_ordenada = sorted(pontuacao_com_indices, key=lambda x: x[0], reverse=True)
 
+#Imprimir pontuações
 a = 0
 for pontuacao, i in pontuacao_ordenada:
     print(medals[a], end=" ")
