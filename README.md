@@ -1,4 +1,4 @@
-Este projeto foi realizado para contemplar a avaliação da matéria MATA58-SISTEMAS OPERACIONAIS ministrada pelo Prof. Robespierre Pitta, na Universidade Federal da Bahia.
+Este projeto foi realizado pelo aluno Lucas Longo R. De Souza para contemplar a avaliação da matéria MATA58-SISTEMAS OPERACIONAIS ministrada pelo Prof. Robespierre Pitta, na Universidade Federal da Bahia.
 
 O jogo consiste em uma competição, onde os players são threads diferentes que objetivam resolver desafios matemáticos com algoritimos diferentes, dentre os desafios temos: fibonacci, ordenação de arrays e verificação de palíndromos.
 
