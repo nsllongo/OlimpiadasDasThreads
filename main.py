@@ -153,6 +153,7 @@ array = [34, 7, 23, 32, 5, 62, 32, 2, 1, 4, 12, 22, 45, 33, 21, 56, 78,
          90, 11, 13, 15, 17, 19, 20, 25, 27, 29, 31, 35, 37, 39, 41, 43, 
          47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77, 79]
 
+#Emojis de Pódio
 medals = ["🥇", "🥈", "🥉", "😤"]
 
 #Array com as funções dos desafios	
@@ -177,6 +178,7 @@ with ThreadPoolExecutor(max_workers=3) as executor:
 
     for future in futures:
         future.result()
+        
 print("Todas as threads terminaram.")
 
 print("Pontuação final:")
