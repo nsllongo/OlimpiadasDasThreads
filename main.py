@@ -119,6 +119,20 @@ class MySemaphore:
         with self._lock:
             self._counter += 1
 
+class MyBarrier:
+    def __init__(self, n):
+        self.n = n
+        self._count = 0
+        self._condition = threading.Condition()
+
+    def esperar(self):
+        with self._condition:
+            self._count += 1
+            if self._count == self.n:
+                self._count = 0  # Reset para reutilizar a barreira
+                self._condition.notify_all()
+            else:
+                self._condition.wait()
 
 #Função que cria as threads
 def mythread(name, id):
@@ -135,9 +149,9 @@ def mythread(name, id):
         else:
             print(f"{Fore.RED}Thread {name} terminou {task.__name__}  e não conseguiu lock no semáforo.")   
             time.sleep(random.uniform(0.4, 0.6))
-
-
-
+        print(f"{Fore.YELLOW}Thread {name} chegou na barreira.")
+        barreira.esperar()
+        print(f"{Fore.CYAN}Thread {name} passou da barreira.")
 
 #Lista de palavras utilizadas no desafio de palindromos
 words = [
@@ -154,7 +168,7 @@ array = [34, 7, 23, 32, 5, 62, 32, 2, 1, 4, 12, 22, 45, 33, 21, 56, 78,
          47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77, 79]
 
 #Emojis de Pódio
-medals = ["🥇", "🥈", "🥉", "😤"]
+medals = ["🥇", "🥈", "🥉", "😤","😤"]
 
 #Array com as funções dos desafios	
 challenges = [fibonacci, sorting, palindrome]
@@ -162,19 +176,24 @@ challenges = [fibonacci, sorting, palindrome]
 #Inicialização do semáforo
 semaphore = MySemaphore(1)
 
+#Inicialização da barreira
+barreira = MyBarrier(5)
+
 #Array com as pontuações dos jogadores
-pontuacao = [0, 0, 0, 0]
+pontuacao = [0, 0, 0, 0, 0]
 
 #Array com as threads
 threads = []
 
 #Criação das threads com ThreadPoolExecutor
-with ThreadPoolExecutor(max_workers=3) as executor:
+with ThreadPoolExecutor(max_workers=5) as executor:
     futures = []
     futures.append(executor.submit(mythread, "Player1", 0))
     futures.append(executor.submit(mythread, "Player2", 1))
     futures.append(executor.submit(mythread, "Player3", 2))
     futures.append(executor.submit(mythread, "Player4", 3))
+    futures.append(executor.submit(mythread, "Player5", 4))
+
 
     for future in futures:
         future.result()
@@ -184,7 +203,7 @@ print("Todas as threads terminaram.")
 print("Pontuação final:")
 
 #Salvar pontuações junto aos seusn índices que identificam a thread que a fez
-pontuacao_com_indices = [(pontuacao[i], i) for i in range(4)]
+pontuacao_com_indices = [(pontuacao[i], i) for i in range(5)]
 
 #Ordenar pontuações
 pontuacao_ordenada = sorted(pontuacao_com_indices, key=lambda x: x[0], reverse=True)
