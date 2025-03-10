@@ -4,13 +4,19 @@ O jogo consiste em uma competição, onde os players são threads diferentes que
 
 Lógica da pontuação:
 
-    Cada thread corresponde a um indice na array pontuação, por exemplo, a thread 1 é o índice 0 na array, assim, a thread passa um argumento para a sua função que permite que ela apenas incremente mais pontos no índice 0 da array, quando o programa termina, criamos uma tupla que salva o índice e a pontuação, posteriormente essa tupla é ordenada para que os players com mais pontos fiquem a cima, criando um pódio.
+    Cada thread corresponde a um indice na array pontuação, por exemplo, a thread 1 é o índice 0 na array, assim,
+    a thread passa um argumento para a sua função que permite que ela apenas incremente mais pontos no índice 0 da
+    array, quando o programa termina, criamos uma tupla que salva o índice e a pontuação, posteriormente essa tupla
+    é ordenada para que os players com mais pontos fiquem a cima, criando um pódio.
 
     
 Blibiotecas:
 
     Threading
-    Utilizando a blibioteca threading, usei a função de lock para implementar um simples semáforo que é utilizado no jogo, onde toda vez que uma thread termina um desafio, a mesma usa o semaforo para ter acesso a uma array onde incrementa sua própia pontuação, assim, se outras threads terminarem logo em seguida e tentarem incrementar suas respectivas pontuações, elas serão impedidas e seguirão para o proximo desafio.
+    Utilizando a blibioteca threading, usei a função de lock para implementar um simples semáforo que é utilizado 
+    no jogo, onde toda vez que uma thread termina um desafio, a mesma usa o semaforo para ter acesso a uma array 
+    onde incrementa sua própia pontuação, assim, se outras threads terminarem logo em seguida e tentarem incrementar
+    suas respectivas pontuações, elas serão impedidas e seguirão para o proximo desafio.
 
     Colorama:
     utilizada para mudar a cor do log no terminal.
