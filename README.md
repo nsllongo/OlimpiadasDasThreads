@@ -31,4 +31,6 @@ Blibiotecas:
 
 Tutorial de execução:
 
-    Tendo o Python 3.12(ou superior) instalado na sua máquina, basta copiar o repositório e executar através da sua IDE de preferência. Lembre-se que blibiotecas como a colorama precisam ser instaladas, através do comando "pip install colorama".
+    Tendo o Python 3.12(ou superior) instalado na sua máquina, basta copiar o repositório e executar através 
+    da sua IDE de preferência. Lembre-se que blibiotecas como a colorama precisam ser instaladas, através do 
+    comando "pip install colorama".
